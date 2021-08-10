@@ -1,6 +1,7 @@
 import matplotlib as mt
 import matplotlib.pyplot as plt
 import numpy as np
+from mpl_toolkits.mplot3d import Axes3D
 
 # Base parameter required for the simulation
 l = float(input("length: "))
@@ -235,6 +236,7 @@ for k in range(iterations):
 
 print(TempM)
 
+#Plotting a contour
 xcc = np.empty(shape=(y_cells, x_cells))
 ycc = np.empty(shape=(y_cells, x_cells))
 
@@ -245,8 +247,31 @@ for i in range(x_cells):
     for j in range(y_cells):
         ycc[i][j] = (y_coo[j+1] + y_coo[j])/2
 
-print(xcc)
-print(ycc)
-#xcc = xcc.T
-plt.contourf(xcc.T, ycc.T,TempM,cmap=plt.cm.jet)
+fig = plt.figure()
+axes = fig.gca(projection ='3d')
+axes.plot_surface(ycc, xcc, TempM, cmap=plt.cm.jet)
+  
 plt.show()
+
+plt.contourf(ycc, xcc,TempM,cmap=plt.cm.jet)
+plt.show()
+
+tpx = np.empty(shape=y_cells)
+y = np.empty(shape=y_cells)
+cx = int(input("cell number in x direction to plot a temperature graph of: "))
+for i in range(y_cells):
+    tpx[i] = TempM[i][cx]
+    y[i] = (y_coo[i + 1] + y_coo[i])/2
+plt.plot(y,tpx)
+plt.show()
+
+tpy = np.empty(shape=x_cells)
+x = np.empty(shape=x_cells)
+cy = int(input("cell number in y direction to plot a temperature graph of: "))
+for i in range(x_cells):
+    tpy[i] = TempM[cy][i]
+    x[i] = (x_coo[i + 1] + x_coo[i])/2
+plt.plot(x,tpy)
+plt.show()
+
+##---------------works for squares only------------------## 
