@@ -32,7 +32,7 @@ for i in range(cx):
     x_coo = np.append(x_coo, t)
 x_cells = cx
 
-y_coo = np.zeros(1)
+y_coo = np.zeros(1) 
 t = 0
 for i in range(cy):
     t += fcly*(ry**i)
@@ -91,7 +91,7 @@ wt = np.zeros((y_cells, x_cells, 5))
 for i in rows:
     for j in columns:
         if (i >= 1 and i <= y_cells - 2) and (j >= 1 and j <= x_cells - 2):
-         # matrix ecluding boundary cells
+         # matrix excluding boundary cells
             dxw = (x_coo[j + 1] - x_coo[j - 1])/2
             dxe = (x_coo[j + 2] - x_coo[j])/2
             dyn = (y_coo[i + 2] - y_coo[i])/2
@@ -104,7 +104,7 @@ for i in rows:
             a_s = dy/dys
             a_p = (a_e + a_w + a_n + a_s) * (-1)
 # boundary cells
-        elif j == x_cells - 1 and i in range(1, y_cells - 2):
+        elif j == x_cells - 1 and i in range(1, y_cells - 2):#east
             dxw = (x_coo[j + 1] - x_coo[j - 1])/2
             dxe = (x_coo[j + 1] - x_coo[j])
             dyn = (y_coo[i + 2] - y_coo[i])/2
@@ -274,4 +274,4 @@ for i in range(x_cells):
 plt.plot(x,tpy)
 plt.show()
 
-##---------------works for squares only------------------## 
+##---------------3d graph and contour works for squares only------------------## 
