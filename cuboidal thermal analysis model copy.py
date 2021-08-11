@@ -208,6 +208,7 @@ for i in rows:
         wt[i, j, 3] = a_w
         wt[i, j, 4] = a_p
 
+#iterations
 iterations = int(input("iterations: "))
 for k in range(iterations):
     for i in rows:
