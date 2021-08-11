@@ -237,6 +237,8 @@ for k in range(iterations):
 
 print(TempM)
 
+##---------------CFD CODE WORKS FOR SQUARE/RECTANGLE UNIFORM/NON-UNIFORM MESHES------------------##
+
 #Plotting a contour
 xcc = np.empty(shape=(y_cells, x_cells))
 ycc = np.empty(shape=(y_cells, x_cells))
