@@ -239,6 +239,26 @@ print(TempM)
 
 ##---------------CFD CODE WORKS FOR SQUARE/RECTANGLE UNIFORM/NON-UNIFORM MESHES------------------##
 
+#Variation of temperature in y direction for given value of x
+tpx = np.empty(shape=y_cells)
+y = np.empty(shape=y_cells)
+cx = int(input("cell number in x direction to plot a temperature graph of: "))
+for i in range(y_cells):
+    tpx[i] = TempM[i][cx]
+    y[i] = (y_coo[i + 1] + y_coo[i])/2
+plt.plot(y,tpx)
+plt.show()
+
+#Variation of temperature in y direction for given value of x
+tpy = np.empty(shape=x_cells)
+x = np.empty(shape=x_cells)
+cy = int(input("cell number in y direction to plot a temperature graph of: "))
+for i in range(x_cells):
+    tpy[i] = TempM[cy][i]
+    x[i] = (x_coo[i + 1] + x_coo[i])/2
+plt.plot(x,tpy)
+plt.show()
+
 #Plotting a contour
 xcc = np.empty(shape=(y_cells, x_cells))
 ycc = np.empty(shape=(y_cells, x_cells))
@@ -250,31 +270,13 @@ for i in range(x_cells):
     for j in range(y_cells):
         ycc[i][j] = (y_coo[j+1] + y_coo[j])/2
 
+plt.contourf(ycc, xcc,TempM,cmap=plt.cm.jet)
+plt.show()
+
+#plotting 3d surface graph
 fig = plt.figure()
 axes = fig.gca(projection ='3d')
 axes.plot_surface(ycc, xcc, TempM, cmap=plt.cm.jet)
   
 plt.show()
-
-plt.contourf(ycc, xcc,TempM,cmap=plt.cm.jet)
-plt.show()
-
-tpx = np.empty(shape=y_cells)
-y = np.empty(shape=y_cells)
-cx = int(input("cell number in x direction to plot a temperature graph of: "))
-for i in range(y_cells):
-    tpx[i] = TempM[i][cx]
-    y[i] = (y_coo[i + 1] + y_coo[i])/2
-plt.plot(y,tpx)
-plt.show()
-
-tpy = np.empty(shape=x_cells)
-x = np.empty(shape=x_cells)
-cy = int(input("cell number in y direction to plot a temperature graph of: "))
-for i in range(x_cells):
-    tpy[i] = TempM[cy][i]
-    x[i] = (x_coo[i + 1] + x_coo[i])/2
-plt.plot(x,tpy)
-plt.show()
-
 ##---------------3d graph and contour works for squares only------------------## 
